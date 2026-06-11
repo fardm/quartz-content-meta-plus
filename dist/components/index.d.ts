@@ -1,10 +1,9 @@
 import { QuartzComponent } from '@quartz-community/types';
 
-interface ExampleComponentOptions {
-    prefix?: string;
-    suffix?: string;
-    className?: string;
+interface ContentMetaPlusOptions {
+    showReadingTime?: boolean;
+    showComma?: boolean;
 }
-declare const _default: (opts?: ExampleComponentOptions) => QuartzComponent;
+declare const _default: (opts?: ContentMetaPlusOptions) => QuartzComponent;
 
-export { _default as ExampleComponent, type ExampleComponentOptions };
+export { _default as ContentMetaPlus, type ContentMetaPlusOptions };

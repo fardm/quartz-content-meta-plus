@@ -1,0 +1,31 @@
+.content-meta-plus {
+  &[show-comma="true"] {
+    > *:not(:last-child) {
+      margin-right: 8px;
+
+      &::after {
+        content: ",";
+      }
+    }
+  }
+}
+
+.content-meta-plus {
+  color: var(--darkgray) !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.content-meta-plus > span {
+  background-color: var(--lightgray);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.9em;
+  border: 1px solid transparent;
+}
+
+.content-meta-plus > span:hover {
+  border-color: var(--gray);
+  cursor: help;
+}

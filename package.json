@@ -1,23 +1,21 @@
 {
-  "name": "@quartz-community/plugin-template",
-  "version": "0.1.0",
-  "description": "Template repository for Quartz community plugins.",
+  "name": "content-meta-plus",
+  "version": "1.0.0",
+  "description": "پلاگین شمارش کلمات و کامپوننت متادیتای پیشرفته برای کوارتز نسخه ۵",
   "type": "module",
   "license": "MIT",
-  "author": "Quartz Community",
-  "homepage": "https://quartz.jzhao.xyz",
+  "author": "fardm",
+  "homepage": "https://github.com/fardm/quartz-content-meta-plus",
   "repository": {
     "type": "git",
-    "url": "https://github.com/quartz-community/plugin-template"
+    "url": "https://github.com/fardm/quartz-content-meta-plus"
   },
   "keywords": [
     "quartz",
     "quartz-plugin",
-    "plugin-template",
-    "remark",
-    "rehype",
-    "mdast",
-    "hast"
+    "word-count",
+    "content-meta",
+    "quartz-v5"
   ],
   "files": [
     "dist",
@@ -66,7 +64,8 @@
   },
   "dependencies": {
     "@quartz-community/types": "github:quartz-community/types",
-    "@quartz-community/utils": "github:quartz-community/utils"
+    "@quartz-community/utils": "github:quartz-community/utils",
+    "reading-time": "^1.5.0"
   },
   "devDependencies": {
     "@types/hast": "^3.0.4",
@@ -94,13 +93,13 @@
     "vitest": "^2.1.9"
   },
   "quartz": {
-    "name": "plugin-template",
-    "displayName": "Plugin Template",
+    "name": "content-meta-plus",
+    "displayName": "ContentMetaPlus",
     "category": "transformer",
     "version": "1.0.0",
     "quartzVersion": ">=5.0.0",
     "dependencies": [],
-    "defaultOrder": 50,
+    "defaultOrder": 20,
     "defaultEnabled": true,
     "defaultOptions": {},
     "optionSchema": {
@@ -114,10 +113,10 @@
       }
     },
     "components": {
-      "ExampleComponent": {
-        "displayName": "Example Component",
-        "defaultPosition": "right",
-        "defaultPriority": 50
+      "ContentMetaPlus": {
+        "displayName": "ContentMetaPlus",
+        "defaultPosition": "beforeBody",
+        "defaultPriority": 20
       }
     }
   },

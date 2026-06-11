@@ -7,11 +7,13 @@ import readingTime from "reading-time";
 import { classNames } from "../util/lang";
 import style from "./styles/contentMetaPlus.scss";
 
+// تعریف ساختار گزینه‌ها برای کاربر در فایل YAML
 export interface ContentMetaPlusOptions {
-  showReadingTime?: boolean;
-  showComma?: boolean;
+  showReadingTime: boolean;
+  showComma: boolean;
 }
 
+// مقادیر پیش‌فرض در صورتی که کاربر گزینه‌ای را وارد نکرده باشد
 const defaultOptions: ContentMetaPlusOptions = {
   showReadingTime: true,
   showComma: true,
@@ -33,12 +35,12 @@ function formatDate(date: Date, locale: string = "en-US"): string {
   });
 }
 
-export default ((opts?: ContentMetaPlusOptions) => {
+export default ((opts?: Partial<ContentMetaPlusOptions>) => {
+  // ترکیب آپشن‌های ورودی YAML با مقادیر پیش‌فرض افزونه
   const options = { ...defaultOptions, ...opts };
 
   const Component: QuartzComponent = ({ cfg, fileData, displayClass }: QuartzComponentProps) => {
     const text = fileData.text;
-
     if (!text) return null;
 
     const segments: (string | preact.JSX.Element)[] = [];
@@ -47,12 +49,12 @@ export default ((opts?: ContentMetaPlusOptions) => {
       const created = fileData.dates.created;
       const modified = fileData.dates.modified;
 
-      // Created Date
+      // تاریخ انتشار
       if (created) {
         segments.push(<span title="تاریخ انتشار">📅 {formatDate(created, cfg.locale)}</span>);
       }
 
-      // Modified Date
+      // تاریخ آخرین بروزرسانی
       if (modified && created?.toDateString() !== modified.toDateString()) {
         segments.push(
           <span title="تاریخ آخرین بروزرسانی">🔄 {formatDate(modified, cfg.locale)}</span>,
@@ -60,7 +62,7 @@ export default ((opts?: ContentMetaPlusOptions) => {
       }
     }
 
-    // Reading Time
+    // بررسی آپشن زمان مطالعه (showReadingTime) تنظیم شده در فایل YAML
     if (options.showReadingTime) {
       const { minutes } = readingTime(text);
       const displayMinutes = Math.ceil(minutes);
@@ -71,12 +73,12 @@ export default ((opts?: ContentMetaPlusOptions) => {
       );
     }
 
-    // Word Count
+    // تعداد کلمات
     if (fileData.wordCount !== undefined && fileData.frontmatter?.wordcount !== false) {
       segments.push(<span title="تعداد کلمات">{fileData.wordCount} کلمه</span>);
     }
 
-    // Status mapping
+    // وضعیت سند (Status)
     const status = (fileData.frontmatter?.status as string) || "نامشخص";
     if (status !== "نامشخص") {
       segments.push(<span title={statusTooltipMap[status] || status}>{status}</span>);

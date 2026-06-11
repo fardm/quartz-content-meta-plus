@@ -4,7 +4,7 @@ export { default as ContentMetaPlus } from "./components/ContentMetaPlus";
 export type { WordCountPlusOptions } from "./transformer";
 export type { ContentMetaPlusOptions } from "./components/ContentMetaPlus";
 
-// بازنشر تایپ‌های اشتراکی اکوسیستم کوارتز ۵ برای استفاده کاربر
+// بازنشر تایپ‌های اشتراکی اکوسیستم کوارتز ۵
 export type {
   QuartzComponent,
   QuartzComponentProps,

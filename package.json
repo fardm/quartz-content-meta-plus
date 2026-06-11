@@ -101,7 +101,10 @@
     "dependencies": [],
     "defaultOrder": 20,
     "defaultEnabled": true,
-    "defaultOptions": {},
+    "defaultOptions": {
+      "showComma": false,
+      "showReadingTime": false
+    },
     "optionSchema": {
       "highlightToken": {
         "type": "enum",
